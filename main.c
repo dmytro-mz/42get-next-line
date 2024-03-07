@@ -23,7 +23,10 @@ int	main(void)
 	fd = 0;
 	// int fd = open("text.txt", O_RDONLY);
 	while ((s = get_next_line(fd)))
+	{
 		printf("%s", s);
+		free(s);
+	}
 	close(fd);
 	return (0);
 }

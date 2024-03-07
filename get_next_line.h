@@ -20,6 +20,10 @@
 #  define BUFFER_SIZE 32
 # endif
 
-char	*get_next_line(int fd);
+char			*get_next_line(int fd);
+unsigned int	ft_strlen(const char *s);
+void			*ft_memmove(void *dst, const void *src, unsigned int len);
+char			*my_strnjoin(char *line, char *buffer, unsigned int buff_n,
+					unsigned int *line_size);
 
 #endif
