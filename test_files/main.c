@@ -6,7 +6,7 @@
 /*   By: dmoroz <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 18:38:32 by dmoroz            #+#    #+#             */
-/*   Updated: 2024/03/09 18:38:14 by dmoroz           ###   ########.fr       */
+/*   Updated: 2024/03/09 13:08:04 by dmoroz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@ int	main(int ac, char *av[])
 	int		fd;
 
 	// printf("BUFFER_SIZE: %d\n", BUFFER_SIZE);
-	// char *a = (char *)malloc(2);
-	// a++;
 	if (ac == 2)
 		fd = open(av[1], O_RDONLY);
 	else
