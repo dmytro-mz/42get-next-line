@@ -7,3 +7,6 @@ TO_DROP*
 .vscode/
 *.o
 libft.a
+francinette
+gnl-station-tester
+gnlTester
