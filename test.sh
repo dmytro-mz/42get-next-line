@@ -9,7 +9,7 @@ cc -Wall -Wextra -Werror main.c get_next_line.c get_next_line_utils.c -o mandato
 echo ""
 for prog in mandatory_1 mandatory_42 mandatory_1000 mandatory_default; do
     echo "Testing ${prog}:"
-    for test_file in $(ls ./test_files); do
+    for test_file in a.txt b.txt empty.txt main.c; do
         echo "${test_file}..."
         valgrind --leak-check=full -q ./${prog} test_files/${test_file} > test_out.txt
         diff test_files/${test_file} test_out.txt
