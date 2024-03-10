@@ -1,43 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmoroz <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 18:38:32 by dmoroz            #+#    #+#             */
-/*   Updated: 2024/03/10 11:19:10 by dmoroz           ###   ########.fr       */
+/*   Updated: 2024/03/10 11:30:14 by dmoroz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include <fcntl.h>
 #include <stdio.h>
+#include <signal.h>
 
 int	main(int ac, char *av[])
 {
 	char	*s;
-	int		fd;
 
 	// printf("BUFFER_SIZE: %d\n", BUFFER_SIZE);
-	// char *a = (char *)malloc(2);
-	// a++;
-	if (ac >= 2)
-		fd = open(av[1], O_RDONLY);
-	else
-		fd = 0;
-	while ((s = get_next_line(fd)))
+	if (ac != 3)
+		raise(0);
+	int fd1 = open(av[1], O_RDONLY);
+	int fd2 = open(av[2], O_RDONLY);
+	int i = 1;
+	while (i++)
 	{
+		if (i % 2 == 0)
+			s = get_next_line(fd1);
+		else
+			s = get_next_line(fd2);
+		if (!s)
+			break ;
 		printf("%s", s);
 		free(s);
 	}
-	close(fd);
-	if (ac == 3)
-	{
-		// char *a = "";
-		// a++;
-		// a[100] = 1;
-		fprintf(stderr, "%s - BUFFER_SIZE: %d\n", av[0], BUFFER_SIZE);
-	}
+	close(fd1);
+	close(fd2);
 	return (0);
 }

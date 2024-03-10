@@ -16,6 +16,11 @@ for prog in mandatory_1 mandatory_42 mandatory_1000 mandatory_default; do
         valgrind --leak-check=full -q ./${prog} < test_files/${test_file} > test_out.txt
         diff test_files/${test_file} test_out.txt
     done
+    echo "non-existing..."
+    valgrind --leak-check=full -q ./${prog} test_files/non-existing --show-buffer-size > test_out.txt
+    if [ -s test_out.txt ]; then
+        echo "Error: Out file is not empty."
+    fi
     echo ""
 done
 echo ""
