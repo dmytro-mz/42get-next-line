@@ -6,7 +6,7 @@
 /*   By: dmoroz <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 18:12:09 by dmoroz            #+#    #+#             */
-/*   Updated: 2024/03/09 12:20:28 by dmoroz           ###   ########.fr       */
+/*   Updated: 2024/03/10 12:03:50 by dmoroz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ char	*get_next_line(int fd)
 	buffer_pos = read(fd, buffer, BUFFER_SIZE);
 	while (buffer_pos > 0)
 	{
-		if (move_n_check(buffer, &buffer_pos, &res, &res_size))
+		if (!res || move_n_check(buffer, &buffer_pos, &res, &res_size))
 			return (res);
 		buffer_pos = read(fd, buffer, BUFFER_SIZE);
 	}

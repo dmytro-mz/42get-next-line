@@ -6,7 +6,7 @@
 /*   By: dmoroz <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 18:12:09 by dmoroz            #+#    #+#             */
-/*   Updated: 2024/03/09 18:17:27 by dmoroz           ###   ########.fr       */
+/*   Updated: 2024/03/10 12:04:17 by dmoroz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ char	*get_next_line(int fd)
 	cfb->buffer_pos = read(fd, cfb->buffer, BUFFER_SIZE);
 	while (cfb->buffer_pos > 0)
 	{
-		if (move_n_check(cfb, &res, &res_size))
+		if (!res || move_n_check(cfb, &res, &res_size))
 			return (res);
 		cfb->buffer_pos = read(fd, cfb->buffer, BUFFER_SIZE);
 	}
